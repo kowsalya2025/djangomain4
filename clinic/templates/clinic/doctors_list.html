@@ -1,0 +1,19 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+{% block content %}
+<h3>Doctors</h3>
+<div class="row">
+  {% for d in doctors %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      {% if d.photo %}<img src="{{ d.photo.url }}" class="card-img-top">{% endif %}
+      <div class="card-body">
+        <h5 class="card-title">Dr. {{ d.full_name }}</h5>
+        <p class="card-text">{{ d.specialty.name }}</p>
+        <a href="{% url 'clinic:doctor_detail' d.id %}" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

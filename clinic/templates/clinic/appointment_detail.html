@@ -1,0 +1,15 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+{% block content %}
+<h3>Appointment Detail</h3>
+<p>Patient: {{ appointment.patient.full_name }}</p>
+<p>Doctor: {{ appointment.doctor.full_name }}</p>
+<p>When: {{ appointment.timeslot.date }} {{ appointment.timeslot.start }}</p>
+{% if appointment.prescription %}
+  <h5>Prescription</h5>
+  <p>{{ appointment.prescription.content }}</p>
+  {% if appointment.prescription.file %}
+    <a href="{{ appointment.prescription.file.url }}">Download</a>
+  {% endif %}
+{% endif %}
+{% endblock %}

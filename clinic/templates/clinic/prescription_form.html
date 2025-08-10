@@ -1,0 +1,9 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+{% block content %}
+<h3>Write Prescription</h3>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

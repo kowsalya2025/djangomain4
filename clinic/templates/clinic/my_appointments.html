@@ -1,0 +1,13 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+{% block content %}
+<h3>My Appointments</h3>
+<ul class="list-group">
+  {% for a in appointments %}
+  <li class="list-group-item">
+    Dr. {{ a.doctor.full_name }} — {{ a.timeslot.date }} {{ a.timeslot.start }} — {{ a.status }}
+    <a href="{% url 'clinic:appointment_detail' a.id %}" class="btn btn-sm btn-secondary float-end">View</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

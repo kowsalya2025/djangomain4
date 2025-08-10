@@ -1,0 +1,19 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+{% block content %}
+<h3>Daily Appointments for {{ today }}</h3>
+<a href="?format=csv" class="btn btn-sm btn-outline-secondary mb-2">Download CSV</a>
+<table class="table">
+  <thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Status</th></tr></thead>
+  <tbody>
+    {% for a in appointments %}
+    <tr>
+      <td>{{ a.patient.full_name }}</td>
+      <td>{{ a.doctor.full_name }}</td>
+      <td>{{ a.timeslot.start }}</td>
+      <td>{{ a.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
